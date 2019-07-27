@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 const TiposdocuCodeSchema = new Schema({
     descr: String,
     code: String,
-    job_role: String,
-    job_duty: String,
-    job_descr: String,
+    tiposdocu_role: String,
+    tiposdocu_duty: String,
+    tiposdocu_descr: String,
     comments: String
     
 });

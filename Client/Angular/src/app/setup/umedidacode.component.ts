@@ -6,12 +6,12 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { BackendService } from '../services/backend-service';
 
 @Component({
-    selector: 'tipodocucode',
-    templateUrl: './tiposdocucode.component.html',
+    selector: 'umedidacode',
+    templateUrl: './umedidacode.component.html',
     animations: [moveIn(), fallIn()],
     host: { '[@moveIn]': '' }
 })
-export class TiposdocuCodeComponent implements OnInit, OnDestroy {
+export class UmedidaCodeComponent implements OnInit, OnDestroy {
 
     members: any[];
     dataSource: MatTableDataSource<any>;
@@ -46,13 +46,13 @@ export class TiposdocuCodeComponent implements OnInit, OnDestroy {
     
     getData(filterAllDocs?, getOneDoc?) {
         this.dataLoading = true;
-        return this.querySubscription = this._backendService.getTiposdocuCode(filterAllDocs, getOneDoc).subscribe((res) => {
-            if (res["data"]["getTiposdocuCode_Q"].code !== "") {
+        return this.querySubscription = this._backendService.getUmedidaCode(filterAllDocs, getOneDoc).subscribe((res) => {
+            if (res["data"]["getUmedidaCode_Q"].code !== "") {
                 if(getOneDoc) {
-                    this.data = res["data"]["getTiposdocuCode_Q"][0];
+                    this.data = res["data"]["getUmedidaCode_Q"][0];
                     this.toggle('editMode');
                 } else {
-                    this.dataSource = new MatTableDataSource(res["data"]["getTiposdocuCode_Q"]);
+                    this.dataSource = new MatTableDataSource(res["data"]["getUmedidaCode_Q"]);
                     this.dataSource.paginator = this.paginator;
                     this.dataSource.sort = this.sort;
                 }
@@ -60,7 +60,7 @@ export class TiposdocuCodeComponent implements OnInit, OnDestroy {
                 this.errorMessage = "";
             } else {
                 this.error = true;
-                this.errorMessage = res["data"]["getTiposdocuCode_Q"].message;
+                this.errorMessage = res["data"]["getUmedidaCode_Q"].message;
             }
         },
             (error) => {
@@ -75,14 +75,14 @@ export class TiposdocuCodeComponent implements OnInit, OnDestroy {
 
     setData(formData) {
         this.dataLoading = true;
-        this.querySubscription = this._backendService.setTiposdocuCode(formData).subscribe((res) => {
-            if (res["data"]["setTiposdocuCode_M"].code !== "") {
+        this.querySubscription = this._backendService.setUmedidaCode(formData).subscribe((res) => {
+            if (res["data"]["setUmedidaCode_M"].code !== "") {
                 this.savedChanges = true;
                 this.error = false;
                 this.errorMessage = "";
             } else {
                 this.error = true;
-                this.errorMessage = res["data"]["setTiposdocuCode_M"].message;
+                this.errorMessage = res["data"]["setUmedidaCode_M"].message;
             }
         },
             (error) => {
@@ -97,14 +97,14 @@ export class TiposdocuCodeComponent implements OnInit, OnDestroy {
 
     updateData(formData) {
         this.dataLoading = true;
-        this.querySubscription = this._backendService.setTiposdocuCodeDoc(formData).subscribe((res) => {
-            if (res["data"]["setTiposdocuCodeDoc_M"].code !== "") {
+        this.querySubscription = this._backendService.setUmedidaCodeDoc(formData).subscribe((res) => {
+            if (res["data"]["setUmedidaCodeDoc_M"].code !== "") {
                 this.savedChanges = true;
                 this.error = false;
                 this.errorMessage = "";
             } else {
                 this.error = true;
-                this.errorMessage = res["data"]["setTiposdocuCodeDoc_M"].message;
+                this.errorMessage = res["data"]["setUmedidaCodeDoc_M"].message;
             }
         },
             (error) => {
@@ -123,15 +123,15 @@ export class TiposdocuCodeComponent implements OnInit, OnDestroy {
 
     deleteDoc(docId) {
         if (confirm("Are you sure want to delete this record ?")) {
-            this.querySubscription = this._backendService.delTiposdocuCodeDoc(docId).subscribe((res) => {
+            this.querySubscription = this._backendService.delUmedidaCodeDoc(docId).subscribe((res) => {
                 //console.log("res"+JSON.stringify(res))
-                if (!res["data"]["delTiposdocuCodeDoc_M"]) {
+                if (!res["data"]["delUmedidaCodeDoc_M"]) {
                     this.toggle('searchMode');
                     this.error = false;
                     this.errorMessage = "";
                 } else {
                     this.error = true;
-                    this.errorMessage = res["data"]["delTiposdocuCodeDoc_M"].message;
+                    this.errorMessage = res["data"]["delUmedidaCodeDoc_M"].message;
                 }
             },
                 (error) => {

@@ -27,6 +27,10 @@ import { JobCodeComponent } from './setup/jobcode.component';
 
 import {TiposdocuCodeComponent } from './setup/tiposdocucode.component';
 
+
+
+import {UmedidaCodeComponent } from './setup/umedidacode.component';
+
 //import { TiposCodeComponent } from './setup/tiposcode.component';
 
 
@@ -51,7 +55,7 @@ import { SalaryComponent } from './manage/salary.component';
     SettingsComponent,
     JobCodeComponent,
     TiposdocuCodeComponent,
-
+    UmedidaCodeComponent,   
 
    // TiposCodeComponent,
 

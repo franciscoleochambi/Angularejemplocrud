@@ -13,7 +13,7 @@ import { JobCodeComponent } from './setup/jobcode.component';
 
 import {TiposdocuCodeComponent } from './setup/tiposdocucode.component';
 
- 
+import { UmedidaCodeComponent } from './setup/umedidacode.component';
 
 import { LeaveCodeComponent } from './setup/leavecode.component';
 import { SalaryCodeComponent } from './setup/salarycode.component';
@@ -43,7 +43,7 @@ const routes: Routes = [
 
   { path: 'tiposdocucode', component: TiposdocuCodeComponent, canActivate: [AuthGuard] },
 
-
+  { path: 'umedidacode', component: UmedidaCodeComponent, canActivate: [AuthGuard] },
 
   { path: 'leavecode', component: LeaveCodeComponent, canActivate: [AuthGuard] },
   { path: 'salarycode', component: SalaryCodeComponent, canActivate: [AuthGuard] },

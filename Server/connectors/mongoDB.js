@@ -6,6 +6,10 @@ const JobCode = require('../models/mongoDB/jobcode');
 const TiposdocuCode = require('../models/mongoDB/tiposdocucode');
 
 
+const UmedidaCode = require('../models/mongoDB/umedida');
+
+
+
 const LeaveCode = require('../models/mongoDB/leavecode');
 const SalaryCode = require('../models/mongoDB/salarycode');
 const Voucher = require('../models/mongoDB/voucher');
@@ -570,6 +574,72 @@ const getTiposdocuCode_C = input => {
 
 
 
+// umedida  codes functions
+const setUmedidaCode_C = input => {
+  let umedidacode = new UmedidaCode(input);
+  return UmedidaCode.find({ code: input.code }).then((res) => {
+    if (res != "") {
+      return { code: "", message: "Codigo Existente" };
+    } else {
+      umedidacode.save();
+      return { code: input.code };
+    }
+  });
+};
+
+
+
+const setUmedidaCodeDoc_C = input => {
+  let umedidacode = new UmedidaCode(input);
+  return UmedidaCode.findByIdAndUpdate(input._id, input, function (err, res) {
+    if (err) {
+      console.log(err);
+    }
+    if (res) {
+      return { code: input.code, message: "Success" };
+    } else {
+      return { code: "", message: "Not able to update data." };
+    }
+  });
+};
+
+const delUmedidaCodeDoc_C = input => {
+return UmedidaCode.findByIdAndRemove(input._id, function (err, res) {
+  if (err) {
+    console.log(err);
+  }
+  if (res) {
+    return { message: "Success" };
+  } else {
+    return { message: "Not able to update data." };
+  }
+});
+}
+
+const getUmedidaCode_C = input => {
+  return checkRoles(input).then((res) => {
+    if (res.authenticated) {
+      if (input._id) {
+        // search OneDocByID
+        var ObjectId = require('mongoose').Types.ObjectId;
+        return UmedidaCode.findOne({ _id: new ObjectId(input._id) }).then((res)=> {
+          return [res];
+        });
+      } else {
+        // search all docs
+        return UmedidaCode.find({ code: { "$regex": input.code, "$options": "i" }, descr: { "$regex": input.descr, "$options": "i" } }).then((res) => {
+          if (res != "") {
+            return res;
+          } else {
+            return [{ _id: "", code: "", descr: "", message: "Success" }];
+          }
+        });
+      }
+    } else {
+      return [{ _id: "", code: "", descr: "", message: "Not Authorized" }];
+    }
+  })
+}
 
 
 
@@ -601,7 +671,11 @@ module.exports = {
   getTiposdocuCode_C,
   delTiposdocuCodeDoc_C,
 
-  
+  setUmedidaCode_C,
+  setUmedidaCodeDoc_C,
+  getUmedidaCode_C,
+  delUmedidaCodeDoc_C,
+
 
 
   setLeaveCode_C,

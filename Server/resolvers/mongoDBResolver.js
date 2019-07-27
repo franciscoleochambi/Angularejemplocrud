@@ -129,6 +129,29 @@ const delTiposdocuCodeDoc_R = (context, input, expectedRoles, connectorQuery) =>
 }
 
 
+//unidadMedida functions
+const setUmedidaCode_R = (context, input, expectedRoles, connectorQuery) => {
+  input["myid"] = checkToken(context).id;
+  input["expectedRoles"] = expectedRoles;
+  return connectorQuery.apply(this, [input]);
+}
+const setUmedidaCodeDoc_R = (context, input, expectedRoles, connectorQuery) => {
+  input["myid"] = checkToken(context).id;
+  input["expectedRoles"] = expectedRoles;
+  return connectorQuery.apply(this, [input]);
+}
+const getUmedidaCode_R = (context, input, expectedRoles, connectorQuery) => {
+  input["myid"] = checkToken(context).id;
+  input["expectedRoles"] = expectedRoles;
+  return connectorQuery.apply(this, [input]);
+}
+const delUmedidaCodeDoc_R = (context, input, expectedRoles, connectorQuery) => {
+  input["myid"] = checkToken(context).id;
+  input["expectedRoles"] = expectedRoles;
+  return connectorQuery.apply(this, [input]);
+}
+
+
 
 
 
@@ -270,6 +293,10 @@ module.exports = {
   setTiposdocuCodeDoc_R,
   delTiposdocuCodeDoc_R,
 
+  setUmedidaCode_R,
+  getUmedidaCode_R,
+  setUmedidaCodeDoc_R,
+  delUmedidaCodeDoc_R,
 
 
 

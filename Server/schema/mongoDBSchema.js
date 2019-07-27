@@ -25,6 +25,14 @@ const { // define resolvers
   delTiposdocuCodeDoc_R,
 
 
+  setUmedidaCode_R,
+  setUmedidaCodeDoc_R,
+  getUmedidaCode_R,
+  delUmedidaCodeDoc_R,
+
+
+
+
 
 
 
@@ -73,6 +81,14 @@ const { // define mongodb connectors
   getTiposdocuCode_C,
   delTiposdocuCodeDoc_C,
 
+ 
+
+
+
+  setUmedidaCode_C,
+  setUmedidaCodeDoc_C,
+  getUmedidaCode_C,
+  delUmedidaCodeDoc_C,
 
 
 
@@ -150,20 +166,22 @@ const typeDefs = `
     comments: String
     message: String
   }
-
   type TiposdocuCode {
     _id: String
     code: String!
     descr: String!
-    job_role: String
-    job_duty: String
-    job_descr: String
+    tiposdocu_role: String
+    tiposdocu_duty: String
+    tiposdocu_descr: String
     comments: String
     message: String
   }
-
-
-
+  type UmedidaCode {
+    _id: String
+    code: String!
+    descr: String!
+    message: String
+  }
 
   type LeaveCode {
     _id: String
@@ -342,6 +360,8 @@ const typeDefs = `
 
     getTiposdocuCode_Q(_id:String,code:String!,descr:String!): [TiposdocuCode]
 
+    getUmedidaCode_Q(_id:String,code:String!,descr:String!): [UmedidaCode]
+
     getLeaveCode_Q(_id:String,code:String!,descr:String!): [LeaveCode]
     getSalaryCode_Q(_id:String,code:String!,descr:String!): [SalaryCode]
     getVoucher_Q(_id:String,CODE:String,DESCR:String): [Voucher]
@@ -361,9 +381,12 @@ const typeDefs = `
     delJobCodeDoc_M(_id:String): DelCode
 
     setTiposdocuCode_M(code: String!,descr: String!,tiposdocu_role: String,tiposdocu_duty: String,tiposdocu_descr: String,comments: String): TiposdocuCode
-    setTiposdocuCodeDoc_M(_id:String,code: String!,descr: String!,tiposodcu_role: String,tiposdocu_duty: String,tiposdocu_descr: String,comments: String): TiposdocuCode
+    setTiposdocuCodeDoc_M(_id:String,code: String!,descr: String!,tiposdocu_role: String,tiposdocu_duty: String,tiposdocu_descr: String,comments: String): TiposdocuCode
     delTiposdocuCodeDoc_M(_id:String): DelCode
 
+    setUmedidaCode_M(code: String!,descr: String!): UmedidaCode
+    setUmedidaCodeDoc_M(_id:String,code: String!,descr: String!): UmedidaCode
+    delUmedidaCodeDoc_M(_id:String): DelCode
 
 
 
@@ -398,6 +421,11 @@ const resolvers = {
 
 
 
+    getUmedidaCode_Q: (_, args, context) => getUmedidaCode_R(context, args, ["admin", "owner", "dummy"], getUmedidaCode_C),
+
+
+
+
     getLeaveCode_Q: (_, args, context) => getLeaveCode_R(context, args, ["admin", "owner", "dummy"], getLeaveCode_C),
     getSalaryCode_Q: (_, args, context) => getSalaryCode_R(context, args, ["admin", "owner", "dummy"], getSalaryCode_C),
     getVoucher_Q: (_, args, context) => getVoucher_R(context, args, ["admin", "owner", "dummy"], getVoucher_C),
@@ -419,6 +447,12 @@ const resolvers = {
     setTiposdocuCode_M: (_, args, context) => setTiposdocuCode_R(context, args, ["admin", "owner", "dummy"], setTiposdocuCode_C),
     setTiposdocuCodeDoc_M: (_, args, context) => setTiposdocuCodeDoc_R(context, args, ["admin", "owner", "dummy"], setTiposdocuCodeDoc_C),
     delTiposdocuCodeDoc_M: (_, args, context) => delTiposdocuCodeDoc_R(context, args, ["admin", "owner", "dummy"], delTiposdocuCodeDoc_C),
+
+
+    setUmedidaCode_M: (_, args, context) => setUmedidaCode_R(context, args, ["admin", "owner", "dummy"], setUmedidaCode_C),
+    setUmedidaCodeDoc_M: (_, args, context) => setUmedidaCodeDoc_R(context, args, ["admin", "owner", "dummy"], setUmedidaCodeDoc_C),
+    delUmedidaCodeDoc_M: (_, args, context) => delUmedidaCodeDoc_R(context, args, ["admin", "owner", "dummy"], delUmedidaCodeDoc_C),
+
 
 
 

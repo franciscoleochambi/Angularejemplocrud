@@ -144,17 +144,17 @@ export class BackendService {
   // tiposdocucode setup page functions
   getTiposdocuCode(filterAllDocs?, getOneDoc?) {
     let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': localStorage.getItem('token') ? localStorage.getItem('token') : "" }) };
-    let formData = !filterAllDocs ? { _id: "", codigo: "", descripcion: '' } : filterAllDocs;
+    let formData = !filterAllDocs ? { _id: "", code: "", descr: '' } : filterAllDocs;
     formData._id = !getOneDoc ? "" : getOneDoc;
-    formData.codigo = filterAllDocs && filterAllDocs.codigo ? filterAllDocs.codigo : "";
-    formData.descripcion = filterAllDocs && filterAllDocs.descripcion ? filterAllDocs.descripcion : "";
+    formData.code = filterAllDocs && filterAllDocs.code ? filterAllDocs.code : "";
+    formData.descr = filterAllDocs && filterAllDocs.descr ? filterAllDocs.descr : "";
 
     let graphqlQuery = {
-      "query": "query getTiposdocuCode($_id: String!,$codigo: String!,$descripcion: String!) { getTiposdocuCode_Q(_id: $_id, codigo: $codigo, descripcion: $descripcion) { _id codigo descripcion job_role job_duty job_descr comments message } }",
+      "query": "query getTiposdocuCode($_id: String!,$code: String!,$descr: String!) { getTiposdocuCode_Q(_id: $_id, code: $code, descr: $descr) { _id code descr tiposdocu_role tiposdocu_duty tiposdocu_descr comments message } }",
       "variables": {
         "_id": formData._id,
-        "codigo": formData.codigo,
-        "descripcion": formData.descripcion
+        "code": formData.code,
+        "descr": formData.descr
       }
     };
     return this._http.post(this._graphQLURL, graphqlQuery, httpOptions);
@@ -163,13 +163,13 @@ export class BackendService {
   setTiposdocuCode(input) {
     let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': localStorage.getItem('token') ? localStorage.getItem('token') : "" }) };
     let graphqlQuery = {
-      "query": "mutation setTiposdocuCode($codigo: String!,$descripcion: String!,$job_role: String!,$job_duty: String!,$job_descr: String!,$comments: String!) { setTiposdocuCode_M(codigo:$codigo,descripcion:$descripcion,job_role:$job_role,job_duty:$job_duty,job_descr:$job_descr,comments:$comments) { code message } }",
+      "query": "mutation setTiposdocuCode($code: String!,$descr: String!,$tiposdocu_role: String!,$tiposdocu_duty: String!,$tiposdocu_descr: String!,$comments: String!) { setTiposdocuCode_M(code:$code,descr:$descr,tiposdocu_role:$tiposdocu_role,tiposdocu_duty:$tiposdocu_duty,tiposdocu_descr:$tiposdocu_descr,comments:$comments) { code message } }",
       "variables": {
-        "codigo": input.codigo,
-        "descripcion": input.descripcion,
-        "job_role": input.job_role,
-        "job_duty": input.job_duty,
-        "job_descr": input.job_descr,
+        "code": input.code,
+        "descr": input.descr,
+        "tiposdocu_role": input.tiposdocu_role,
+        "tiposdocu_duty": input.tiposdocu_duty,
+        "tiposdocu_descr": input.tiposdocu_descr,
         "comments": input.comments,
       }
     };
@@ -179,14 +179,14 @@ export class BackendService {
   setTiposdocuCodeDoc(input) {
     let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': localStorage.getItem('token') ? localStorage.getItem('token') : "" }) };
     let graphqlQuery = {
-      "query": "mutation setTiposdocuCodeDoc($_id:String,$codigo: String!,$descripcion: String!,$job_role: String!,$job_duty: String!,$job_descr: String!,$comments: String!) { setTiposdocuCodeDoc_M(_id:$_id,codigo:$codigo,descripcion:$descripcion,job_role:$job_role,job_duty:$job_duty,job_descr:$job_descr,comments:$comments) { code message } }",
+      "query": "mutation setTiposdocuCodeDoc($_id:String,$code: String!,$descr: String!,$tiposdocu_role: String!,$tiposdocu_duty: String!,$tiposdocu_descr: String!,$comments: String!) { setTiposdocuCodeDoc_M(_id:$_id,code:$code,descr:$descr,tiposdocu_role:$tiposdocu_role,tiposdocu_duty:$tiposdocu_duty,tiposdocu_descr:$tiposdocu_descr,comments:$comments) { code message } }",
       "variables": {
         "_id": input._id,
-        "codigo": input.codigo,
-        "descripcion": input.descripcion,
-        "job_role": input.job_role,
-        "job_duty": input.job_duty,
-        "job_descr": input.job_descr,
+        "code": input.code,
+        "descr": input.descr,
+        "tiposdocu_role": input.tiposdocu_role,
+        "tiposdocu_duty": input.tiposdocu_duty,
+        "tiposdocu_descr": input.tiposdocu_descr,
         "comments": input.comments,
       }
     };
@@ -196,7 +196,7 @@ export class BackendService {
   delTiposdocuCodeDoc(input) {
     let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': localStorage.getItem('token') ? localStorage.getItem('token') : "" }) };
     let graphqlQuery = {
-      "query": "mutation delTiposdocCodeDoc($_id:String) { delTiposdocCodeDoc_M(_id:$_id) { message } }",
+      "query": "mutation delTiposdocuCodeDoc($_id:String) { delTiposdocuCodeDoc_M(_id:$_id) { message } }",
       "variables": {
         "_id": input
       }
@@ -205,6 +205,60 @@ export class BackendService {
   }
 
 
+// umedida setup page functions
+getUmedidaCode(filterAllDocs?, getOneDoc?) {
+  let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': localStorage.getItem('token') ? localStorage.getItem('token') : "" }) };
+  let formData = !filterAllDocs ? { _id: "", code: "", descr: '' } : filterAllDocs;
+  formData._id = !getOneDoc ? "" : getOneDoc;
+  formData.code = filterAllDocs && filterAllDocs.code ? filterAllDocs.code : "";
+  formData.descr = filterAllDocs && filterAllDocs.descr ? filterAllDocs.descr : "";
+
+  let graphqlQuery = {
+    "query": "query getUmedidaCode($_id: String!,$code: String!,$descr: String!) { getUmedidaCode_Q(_id: $_id, code: $code, descr: $descr) { _id code descr  message } }",
+    "variables": {
+      "_id": formData._id,
+      "code": formData.code,
+      "descr": formData.descr
+    }
+  };
+  return this._http.post(this._graphQLURL, graphqlQuery, httpOptions);
+}
+
+setUmedidaCode(input) {
+  let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': localStorage.getItem('token') ? localStorage.getItem('token') : "" }) };
+  let graphqlQuery = {
+    "query": "mutation setUmedidaCode($code: String!,$descr: String!) { setUmedidaCode_M(code:$code,descr:$descr) { code message } }",
+    "variables": {
+      "code": input.code,
+      "descr": input.descr,
+          }
+  };
+  return this._http.post(this._graphQLURL, graphqlQuery, httpOptions);
+}
+
+setUmedidaCodeDoc(input) {
+  let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': localStorage.getItem('token') ? localStorage.getItem('token') : "" }) };
+  let graphqlQuery = {
+    "query": "mutation setUmedidaCodeDoc($_id:String,$code: String!,$descr: String!) { setUmedidaCodeDoc_M(_id:$_id,code:$code,descr:$descr) { code message } }",
+    "variables": {
+      "_id": input._id,
+      "code": input.code,
+      "descr": input.descr,
+    }
+  };
+  return this._http.post(this._graphQLURL, graphqlQuery, httpOptions);
+}
+
+delUmedidaCodeDoc(input) {
+  let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': localStorage.getItem('token') ? localStorage.getItem('token') : "" }) };
+  let graphqlQuery = {
+    "query": "mutation delUmedidaCodeDoc($_id:String) { delUmedidaCodeDoc_M(_id:$_id) { message } }",
+    "variables": {
+      "_id": input
+    }
+  };
+  return this._http.post(this._graphQLURL, graphqlQuery, httpOptions);
+}
 
 
 

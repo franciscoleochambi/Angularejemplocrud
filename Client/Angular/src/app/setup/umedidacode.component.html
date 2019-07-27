@@ -1,4 +1,4 @@
-<header pageTitle="Tipos de Documento" imageUrl="business" helpType="jobpage"></header>
+<header pageTitle="Unidad de Medida" imageUrl="business" helpType="jobpage"></header>
 <mat-card [@fallIn]='state'>
   <mat-card-content>
     <div *ngIf="(toggleField=='searchMode') else (toggleField=='addMode')? showAddMode : ((toggleField=='editMode')? showEditMode : showResMode)">
@@ -60,21 +60,7 @@
           <mat-hint align="end">eg Facturas</mat-hint>
         </mat-form-field>
         <br>
-        <mat-form-field>
-          <textarea  matInput placeholder="Doc Compra o Venta" name="tiposdocu_role" id="tiposdocu_role" ngModel></textarea>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <textarea  matInput placeholder="Observacion" name="tiposdocu_duty" id="tiposdocu_duty" ngModel></textarea>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <textarea  matInput placeholder="Observacion 2" name="tiposdocu_descr" id="tiposdocu_descr" ngModel></textarea>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <textarea  matInput placeholder="Comments" name="comments" id="comments" ngModel></textarea>
-        </mat-form-field>
+        
     </div>
   </form>
 </ng-template>
@@ -111,21 +97,7 @@
           <mat-hint align="end">eg Sales Manager -I</mat-hint>
         </mat-form-field>
         <br>
-        <mat-form-field>
-          <textarea  matInput placeholder="Job Role" name="tiposdocu_role" id="tiposdocu_role" [ngModel]="data.tiposdocu_role"></textarea>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <textarea  matInput placeholder="Job Duties" name="tiposdocu_duty" id="tiposdocu_duty" [ngModel]="data.tiposdocu_duty"></textarea>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <textarea  matInput placeholder="Job Description" name="tiposdocu_descr" id="tiposdocu_descr" [ngModel]="data.tiposdocu_descr"></textarea>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <textarea  matInput placeholder="Comments" name="comments" id="comments" [ngModel]="data.comments"></textarea>
-        </mat-form-field>
+      
     </div>
   </form>
 </ng-template>
