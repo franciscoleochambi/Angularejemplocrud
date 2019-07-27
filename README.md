@@ -19,6 +19,5 @@
 #modificacion de leo chambi
 #modificacion de leo chambi
 
-#modificacion desde lapcomp
 
-
+#MODIFICACION DE LAPTOP
