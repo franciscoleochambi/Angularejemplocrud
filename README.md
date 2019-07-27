@@ -18,5 +18,5 @@
 #modificacion de leo chambi
 #modificacion de leo chambi
 #modificacion de leo chambi
-#modificacion de  redme linux 
+#modificacion de  redme windows
 
