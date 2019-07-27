@@ -18,3 +18,5 @@
 #modificacion de leo chambi
 #modificacion de leo chambi
 #modificacion de leo chambi
+#modificacion de  redme linux 
+
