@@ -20,8 +20,4 @@
 #modificacion de leo chambi
 
 
-
-
-
-
-#MODIFICACION DE LAPTOP
+#LAPTOP
