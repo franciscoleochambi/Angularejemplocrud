@@ -9,3 +9,4 @@
 # backendservices,app_routingmodule,app.module.ts,header.component.html
 
 # Archivos que se necesitan para adicionar nuevos modelos
+#modificacion de leo chambi
