@@ -1,4 +1,13 @@
 # Angularejemplocrud
+#personas aprendiendo
+
+
+
+
+
+
+
+
 # cambios 2
 # Obviando los Archivos de Node Modules
 # cerar Nuevos Modelos
