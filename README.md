@@ -1,13 +1,21 @@
 # Angularejemplocrud
 #personas aprendiendo
 
+#  modificando u archivo
+# 1111222222222222222222222222222222
+
+
+
+
+
+# modificando los cambios
 
 
 
 
 
 
-
+# 11111111111111
 # cambios 2
 # Obviando los Archivos de Node Modules
 # cerar Nuevos Modelos
